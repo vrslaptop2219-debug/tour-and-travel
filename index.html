@@ -1,92 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purva Tours and Travel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purva Tours and Travel</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+<!-- Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-    body { background: #f4f4f4; color: #333; line-height: 1.6; }
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+  body { background: #f4f4f4; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+  a { text-decoration: none; }
 
-    header {
-      background: #0f766e;
-      color: white;
-      text-align: center;
-      padding: 60px 20px 40px;
-      background-image: url('https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+  /* HEADER */
+  header {
+    background: url('https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+  }
+  header h1, header p, header .btn { position: relative; z-index: 1; }
+  header h1 { font-size: 50px; margin-bottom: 15px; animation: fadeInDown 1.5s; }
+  header p { font-size: 22px; animation: fadeInUp 1.5s; }
+  .btn {
+    display: inline-block; background: #f59e0b; color: white; padding: 15px 30px;
+    border-radius: 5px; font-weight: bold; margin-top: 20px; transition: 0.3s;
+    animation: fadeIn 2s;
+  }
+  .btn:hover { background: #d97706; }
 
-    header::after {
-      content: '';
-      position: absolute;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.5);
-    }
+  /* NAVIGATION */
+  nav { position: sticky; top: 0; background: #0f766e; padding: 10px 20px; z-index: 1000; display: flex; justify-content: center; }
+  nav a { color: white; margin: 0 15px; font-weight: bold; transition: 0.3s; }
+  nav a:hover { color: #f59e0b; }
 
-    header h1, header p { position: relative; z-index: 1; }
-    header h1 { font-size: 48px; margin-bottom: 15px; }
-    header p { font-size: 20px; }
+  section { max-width: 1100px; margin: auto; padding: 80px 20px; }
 
-    .btn {
-      display: inline-block;
-      background: #f59e0b;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
-      transition: 0.3s;
-    }
+  h2 { color: #0f766e; margin-bottom: 40px; text-align: center; font-size: 36px; }
 
-    .btn:hover { background: #d97706; }
+  /* SERVICES */
+  .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+  .service { background: white; padding: 30px 20px; border-radius: 10px;
+             width: 250px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+             transition: transform 0.3s; }
+  .service:hover { transform: translateY(-10px); }
+  .service img { width: 60px; margin-bottom: 15px; }
 
-    section { max-width: 1000px; margin: auto; padding: 60px 20px; }
+  /* FLEET */
+  .fleet { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+  .car { background: white; border-radius: 10px; width: 300px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+  .car:hover { transform: scale(1.05); }
+  .car img { width: 100%; }
+  .car h3 { padding: 15px 0; }
 
-    h2 { color: #0f766e; margin-bottom: 25px; text-align: center; }
+  /* BOOKING FORM */
+  form { background: white; padding: 30px 25px; border-radius: 10px;
+         box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+  input, select, textarea, button { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; }
+  textarea { resize: vertical; }
+  button { background: #0f766e; color: white; border: none; cursor: pointer; font-size: 16px; transition: 0.3s; }
+  button:hover { background: #115e59; }
+  .confirmation { display: none; background: #e6fffa; padding: 15px; border-radius: 6px; margin-top: 20px; text-align: center; }
 
-    /* Services Section */
-    .services { display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center; }
-    .service { background: white; padding: 30px 20px; margin: 15px; border-radius: 8px; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-    .service img { width: 60px; margin-bottom: 15px; }
+  /* SUPPORT */
+  .support { text-align: center; }
+  .support a { display: inline-block; margin: 8px 15px; color: #0f766e; font-weight: bold; transition: 0.3s; }
+  .support a:hover { color: #f59e0b; }
 
-    /* Fleet Section */
-    .fleet { display: flex; flex-wrap: wrap; justify-content: center; text-align: center; }
-    .car { background: white; margin: 15px; border-radius: 8px; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; }
-    .car img { width: 100%; }
-    .car h3 { padding: 15px 0; }
+  /* FOOTER */
+  footer { text-align: center; padding: 25px; background: #f1f1f1; font-size: 14px; }
 
-    /* Booking Form */
-    form { background: white; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
-    input, select, textarea, button { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
-    textarea { resize: vertical; }
-    button { background: #0f766e; color: white; border: none; cursor: pointer; font-size: 16px; }
-    button:hover { background: #115e59; }
+  /* ANIMATION CLASSES */
+  .animate-on-scroll { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+  .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
-    .confirmation { display: none; background: #e6fffa; padding: 15px; border-radius: 6px; margin-top: 20px; text-align: center; }
-
-    /* Support Section */
-    .support a { display: block; margin: 8px 0; color: #0f766e; text-decoration: none; font-weight: bold; }
-    .support h3 { margin-top: 20px; margin-bottom: 10px; }
-
-    footer { text-align: center; padding: 25px; background: #f1f1f1; font-size: 14px; }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .services, .fleet { flex-direction: column; align-items: center; }
-      header h1 { font-size: 36px; }
-      header p { font-size: 18px; }
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:768px){
+    header h1 { font-size: 36px; }
+    header p { font-size: 18px; }
+    .services, .fleet { flex-direction: column; align-items: center; }
+  }
+</style>
 </head>
 <body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#services">Services</a>
+  <a href="#fleet">Fleet</a>
+  <a href="#booking">Book Now</a>
+  <a href="#support">Support</a>
+</nav>
 
 <!-- HEADER -->
 <header>
@@ -96,20 +115,20 @@
 </header>
 
 <!-- SERVICES -->
-<section>
+<section id="services">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="service">
+    <div class="service animate-on-scroll">
       <img src="https://img.icons8.com/ios-filled/100/0f766e/car.png"/>
       <h3>Local Travel</h3>
-      <p>Quick and safe travel within city limits.</p>
+      <p>Quick and safe rides within the city.</p>
     </div>
-    <div class="service">
+    <div class="service animate-on-scroll">
       <img src="https://img.icons8.com/ios-filled/100/0f766e/road.png"/>
       <h3>Outstation Trips</h3>
       <p>Comfortable rides for long-distance trips.</p>
     </div>
-    <div class="service">
+    <div class="service animate-on-scroll">
       <img src="https://img.icons8.com/ios-filled/100/0f766e/airport.png"/>
       <h3>Airport Pickup & Drop</h3>
       <p>Timely pickup and drop for flights.</p>
@@ -118,14 +137,14 @@
 </section>
 
 <!-- FLEET -->
-<section>
+<section id="fleet">
   <h2>Our Fleet</h2>
   <div class="fleet">
-    <div class="car">
+    <div class="car animate-on-scroll">
       <img src="https://images.unsplash.com/photo-1594633312160-8a5bfb9cf6f1?auto=format&fit=crop&w=800&q=80" alt="Car 1">
       <h3>Car 1</h3>
     </div>
-    <div class="car">
+    <div class="car animate-on-scroll">
       <img src="https://images.unsplash.com/photo-1595852612504-1c63f4e1d7d5?auto=format&fit=crop&w=800&q=80" alt="Car 2">
       <h3>Car 2</h3>
     </div>
@@ -154,7 +173,7 @@
 </section>
 
 <!-- CUSTOMER SUPPORT -->
-<section class="support">
+<section class="support" id="support">
   <h2>Customer Support</h2>
   <a href="tel:+916397008427">📞 Call: 6397008427</a>
   <a href="https://wa.me/916397008427" target="_blank">💬 WhatsApp Chat</a>
@@ -168,20 +187,32 @@
 
 <!-- JAVASCRIPT -->
 <script>
-document.getElementById("bookingForm").addEventListener("submit", function(e){
-  e.preventDefault();
+  // Scroll animation
+  const animateElements = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  animateElements.forEach(el => observer.observe(el));
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const pickup = document.getElementById("pickup").value;
-  const destination = document.getElementById("destination").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-  const car = document.getElementById("car").value;
+  // Booking Form WhatsApp
+  document.getElementById("bookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-  const ownerNumber = "916397008427";
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const pickup = document.getElementById("pickup").value;
+    const destination = document.getElementById("destination").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const car = document.getElementById("car").value;
 
-  const bookingText =
+    const ownerNumber = "916397008427";
+
+    const bookingText =
 `🚕 New Ride Booking
 Purva Tours and Travel
 
@@ -193,21 +224,22 @@ Date: ${date}
 Time: ${time}
 Car: ${car}`;
 
-  // Owner WhatsApp
-  window.open(`https://wa.me/${ownerNumber}?text=${encodeURIComponent(bookingText)}`, "_blank");
+    // Owner WhatsApp
+    window.open(`https://wa.me/${ownerNumber}?text=${encodeURIComponent(bookingText)}`, "_blank");
 
-  // Customer WhatsApp after 1 second
-  setTimeout(() => {
-    window.open(`https://wa.me/91${phone}?text=${encodeURIComponent("✅ Your ride is booked.\n\n" + bookingText)}`, "_blank");
-  }, 1000);
+    // Customer WhatsApp after 1 second
+    setTimeout(() => {
+      window.open(`https://wa.me/91${phone}?text=${encodeURIComponent("✅ Your ride is booked.\n\n" + bookingText)}`, "_blank");
+    }, 1000);
 
-  document.getElementById("confirmation").style.display = "block";
-  document.getElementById("confirmation").innerHTML =
-    "<h3>Booking Submitted ✅</h3><p>You and the customer will receive WhatsApp messages.</p>";
+    document.getElementById("confirmation").style.display = "block";
+    document.getElementById("confirmation").innerHTML =
+      "<h3>Booking Submitted ✅</h3><p>You and the customer will receive WhatsApp messages.</p>";
 
-  this.reset();
-});
+    this.reset();
+  });
 </script>
 
 </body>
 </html>
+
