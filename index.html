@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purva Tours and Travel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    header {
+      background: #0f766e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0f766e;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background: #0f766e;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #115e59;
+    }
+
+    form {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .confirmation {
+      background: #e6fffa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .support a {
+      display: block;
+      margin: 8px 0;
+      color: #0f766e;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #f1f1f1;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Purva Tours and Travel</h1>
+    <p>Safe • Reliable • Comfortable Travel</p>
+    <a href="#booking" class="btn">Book a Ride</a>
+  </header>
+
+  <!-- SERVICES -->
+  <section>
+    <h2>Our Services</h2>
+    <p>✔ Local Travel</p>
+    <p>✔ Outstation Trips</p>
+    <p>✔ Airport Pickup & Drop</p>
+    <p>✔ 2 Comfortable Cars Available</p>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section id="booking">
+    <h2>Book a Ride</h2>
+
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="text" id="pickup" placeholder="Pick-up Location" required />
+      <input type="text" id="destination" placeholder="Destination Location" required />
+      <input type="date" id="date" required />
+      <input type="time" id="time" required />
+
+      <select id="car" required>
+        <option value="">Select Car</option>
+        <option>Car 1</option>
+        <option>Car 2</option>
+      </select>
+
+      <textarea id="message" placeholder="Message (Optional)"></textarea>
+
+      <button type="submit" class="btn">Submit Booking</button>
+    </form>
+
+    <div class="confirmation" id="confirmation"></div>
+  </section>
+
+  <!-- CUSTOMER SUPPORT -->
+  <section class="support">
+    <h2>Customer Support</h2>
+    <a href="tel:+916397008427">📞 Call: 6397008427</a>
+    <a href="https://wa.me/916397008427" target="_blank">💬 WhatsApp Chat</a>
+    <a href="mailto:purvatoursandtravel@gmail.com">✉ Email: purvatoursandtravel@gmail.com</a>
+
+    <h3>Send a Message</h3>
+    <form>
+      <input type="text" placeholder="Your Name" />
+      <input type="tel" placeholder="Phone Number" />
+      <textarea placeholder="Your Message"></textarea>
+      <button type="button" class="btn">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Purva Tours and Travel. All rights reserved.
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const pickup = document.getElementById("pickup").value;
+      const destination = document.getElementById("destination").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const car = document.getElementById("car").value;
+
+      const confirmation = document.getElementById("confirmation");
+      confirmation.style.display = "block";
+      confirmation.innerHTML = `
+        <h3>Booking Confirmed ✅</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Pickup:</strong> ${pickup}</p>
+        <p><strong>Destination:</strong> ${destination}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Time:</strong> ${time}</p>
+        <p><strong>Car:</strong> ${car}</p>
+        <p>We will contact you shortly on <strong>6397008427</strong>.</p>
+      `;
+
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
