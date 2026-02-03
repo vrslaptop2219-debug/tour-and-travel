@@ -5,107 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purva Tours and Travel</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #333;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+
+    body { background: #f4f4f4; color: #333; line-height: 1.6; }
 
     header {
       background: #0f766e;
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 60px 20px 40px;
+      background-image: url('https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
     }
 
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
+    header::after {
+      content: '';
+      position: absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
     }
 
-    h2 {
-      color: #0f766e;
-    }
+    header h1, header p { position: relative; z-index: 1; }
+    header h1 { font-size: 48px; margin-bottom: 15px; }
+    header p { font-size: 20px; }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background: #0f766e;
+    .btn {
+      display: inline-block;
+      background: #f59e0b;
       color: white;
-      padding: 12px 20px;
-      border: none;
+      padding: 12px 25px;
+      text-decoration: none;
       border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .confirmation {
-      display: none;
-      background: #e6fffa;
-      padding: 15px;
-      border-radius: 6px;
       margin-top: 20px;
+      transition: 0.3s;
     }
 
-    footer {
-      background: #f1f1f1;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
+    .btn:hover { background: #d97706; }
+
+    section { max-width: 1000px; margin: auto; padding: 60px 20px; }
+
+    h2 { color: #0f766e; margin-bottom: 25px; text-align: center; }
+
+    /* Services Section */
+    .services { display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center; }
+    .service { background: white; padding: 30px 20px; margin: 15px; border-radius: 8px; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .service img { width: 60px; margin-bottom: 15px; }
+
+    /* Fleet Section */
+    .fleet { display: flex; flex-wrap: wrap; justify-content: center; text-align: center; }
+    .car { background: white; margin: 15px; border-radius: 8px; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; }
+    .car img { width: 100%; }
+    .car h3 { padding: 15px 0; }
+
+    /* Booking Form */
+    form { background: white; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+    input, select, textarea, button { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+    textarea { resize: vertical; }
+    button { background: #0f766e; color: white; border: none; cursor: pointer; font-size: 16px; }
+    button:hover { background: #115e59; }
+
+    .confirmation { display: none; background: #e6fffa; padding: 15px; border-radius: 6px; margin-top: 20px; text-align: center; }
+
+    /* Support Section */
+    .support a { display: block; margin: 8px 0; color: #0f766e; text-decoration: none; font-weight: bold; }
+    .support h3 { margin-top: 20px; margin-bottom: 10px; }
+
+    footer { text-align: center; padding: 25px; background: #f1f1f1; font-size: 14px; }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .services, .fleet { flex-direction: column; align-items: center; }
+      header h1 { font-size: 36px; }
+      header p { font-size: 18px; }
     }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <h1>Purva Tours and Travel</h1>
   <p>Safe • Reliable • Comfortable Travel</p>
+  <a href="#booking" class="btn">Book Your Ride</a>
 </header>
 
+<!-- SERVICES -->
 <section>
-  <h2>Book a Ride</h2>
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/0f766e/car.png"/>
+      <h3>Local Travel</h3>
+      <p>Quick and safe travel within city limits.</p>
+    </div>
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/0f766e/road.png"/>
+      <h3>Outstation Trips</h3>
+      <p>Comfortable rides for long-distance trips.</p>
+    </div>
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/0f766e/airport.png"/>
+      <h3>Airport Pickup & Drop</h3>
+      <p>Timely pickup and drop for flights.</p>
+    </div>
+  </div>
+</section>
 
+<!-- FLEET -->
+<section>
+  <h2>Our Fleet</h2>
+  <div class="fleet">
+    <div class="car">
+      <img src="https://images.unsplash.com/photo-1594633312160-8a5bfb9cf6f1?auto=format&fit=crop&w=800&q=80" alt="Car 1">
+      <h3>Car 1</h3>
+    </div>
+    <div class="car">
+      <img src="https://images.unsplash.com/photo-1595852612504-1c63f4e1d7d5?auto=format&fit=crop&w=800&q=80" alt="Car 2">
+      <h3>Car 2</h3>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+  <h2>Book a Ride</h2>
   <form id="bookingForm">
     <input type="text" id="name" placeholder="Full Name" required>
-
-    <input type="tel" id="phone" placeholder="10-digit Phone Number"
-      pattern="[0-9]{10}" maxlength="10" required>
-
+    <input type="tel" id="phone" placeholder="10-digit Phone Number" pattern="[0-9]{10}" maxlength="10" required>
     <input type="text" id="pickup" placeholder="Pick-up Location" required>
     <input type="text" id="destination" placeholder="Destination Location" required>
     <input type="date" id="date" required>
     <input type="time" id="time" required>
-
     <select id="car" required>
       <option value="">Select Car</option>
       <option>Car 1</option>
       <option>Car 2</option>
     </select>
-
     <textarea id="message" placeholder="Message (Optional)"></textarea>
-
     <button type="submit">Submit Booking</button>
   </form>
-
   <div class="confirmation" id="confirmation"></div>
 </section>
 
+<!-- CUSTOMER SUPPORT -->
+<section class="support">
+  <h2>Customer Support</h2>
+  <a href="tel:+916397008427">📞 Call: 6397008427</a>
+  <a href="https://wa.me/916397008427" target="_blank">💬 WhatsApp Chat</a>
+  <a href="mailto:purvatoursandtravel@gmail.com">✉ Email: purvatoursandtravel@gmail.com</a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  📞 Owner Contact: <a href="tel:+916397008427">6397008427</a><br>
-  © 2026 Purva Tours and Travel
+  © 2026 Purva Tours and Travel. All Rights Reserved.
 </footer>
 
+<!-- JAVASCRIPT -->
 <script>
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
+document.getElementById("bookingForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const name = document.getElementById("name").value;
@@ -130,23 +193,16 @@ Date: ${date}
 Time: ${time}
 Car: ${car}`;
 
-  const ownerWhatsApp =
-    `https://wa.me/${ownerNumber}?text=${encodeURIComponent(bookingText)}`;
+  // Owner WhatsApp
+  window.open(`https://wa.me/${ownerNumber}?text=${encodeURIComponent(bookingText)}`, "_blank");
 
-  const customerWhatsApp =
-    `https://wa.me/91${phone}?text=${encodeURIComponent(
-      "✅ Your ride is booked with Purva Tours and Travel.\n\n" + bookingText
-    )}`;
-
-  window.open(ownerWhatsApp, "_blank");
-
+  // Customer WhatsApp after 1 second
   setTimeout(() => {
-    window.open(customerWhatsApp, "_blank");
+    window.open(`https://wa.me/91${phone}?text=${encodeURIComponent("✅ Your ride is booked.\n\n" + bookingText)}`, "_blank");
   }, 1000);
 
-  const confirmation = document.getElementById("confirmation");
-  confirmation.style.display = "block";
-  confirmation.innerHTML =
+  document.getElementById("confirmation").style.display = "block";
+  document.getElementById("confirmation").innerHTML =
     "<h3>Booking Submitted ✅</h3><p>You and the customer will receive WhatsApp messages.</p>";
 
   this.reset();
