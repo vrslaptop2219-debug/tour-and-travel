@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purva Tours and Travel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    header {
+      background: #0f766e;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      color: #0f766e;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #0f766e;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .confirmation {
+      display: none;
+      background: #e6fffa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #f1f1f1;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Purva Tours and Travel</h1>
+  <p>Safe • Reliable • Comfortable Travel</p>
+</header>
+
+<section>
+  <h2>Book a Ride</h2>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <input type="tel" id="phone" placeholder="10-digit Phone Number"
+      pattern="[0-9]{10}" maxlength="10" required>
+
+    <input type="text" id="pickup" placeholder="Pick-up Location" required>
+    <input type="text" id="destination" placeholder="Destination Location" required>
+    <input type="date" id="date" required>
+    <input type="time" id="time" required>
+
+    <select id="car" required>
+      <option value="">Select Car</option>
+      <option>Car 1</option>
+      <option>Car 2</option>
+    </select>
+
+    <textarea id="message" placeholder="Message (Optional)"></textarea>
+
+    <button type="submit">Submit Booking</button>
+  </form>
+
+  <div class="confirmation" id="confirmation"></div>
+</section>
+
+<footer>
+  📞 Owner Contact: <a href="tel:+916397008427">6397008427</a><br>
+  © 2026 Purva Tours and Travel
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const pickup = document.getElementById("pickup").value;
+  const destination = document.getElementById("destination").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const car = document.getElementById("car").value;
+
+  const ownerNumber = "916397008427";
+
+  const bookingText =
+`🚕 New Ride Booking
+Purva Tours and Travel
+
+Name: ${name}
+Phone: ${phone}
+Pickup: ${pickup}
+Destination: ${destination}
+Date: ${date}
+Time: ${time}
+Car: ${car}`;
+
+  const ownerWhatsApp =
+    `https://wa.me/${ownerNumber}?text=${encodeURIComponent(bookingText)}`;
+
+  const customerWhatsApp =
+    `https://wa.me/91${phone}?text=${encodeURIComponent(
+      "✅ Your ride is booked with Purva Tours and Travel.\n\n" + bookingText
+    )}`;
+
+  window.open(ownerWhatsApp, "_blank");
+
+  setTimeout(() => {
+    window.open(customerWhatsApp, "_blank");
+  }, 1000);
+
+  const confirmation = document.getElementById("confirmation");
+  confirmation.style.display = "block";
+  confirmation.innerHTML =
+    "<h3>Booking Submitted ✅</h3><p>You and the customer will receive WhatsApp messages.</p>";
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>
